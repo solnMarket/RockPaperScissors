@@ -1,17 +1,16 @@
 
 console.log("Hello World!")
 
-let ComputerScore=0;
-let humanScore=0;
+
 
 function getComputerChoice(){
     let choice;
+    let ran;
+    ran= Math.floor(Math.random() * 3);
 
-    choice= Math.floor(Math.random() * 3);
-
-    if(choice==0){
+    if(ran==0){
         choice="Rock"
-    }else if(choice==1){
+    }else if(ran==1){
         choice="Paper"
     }else{
         choice="Scissors"
@@ -24,42 +23,67 @@ function getHumanChoice(){
     return input;
 }
 
-function playRound(h,c){
-    human=h.toUpperCase()
 
-    if(human == 'ROCK'){
-        if(c=='Rock'){
-            return "tie"
-        }else if(c=='Paper'){
-            ComputerScore++;
-            return "you lose"
-        }else{
-            humanScore++;
-            return "you win"
+
+function playGame(){
+    let ComputerScore=0;
+    let humanScore=0;
+
+    
+    function playRound(){
+        h=getHumanChoice();
+        c=getComputerChoice();
+        human=h.toUpperCase();
+    
+        if(human == 'ROCK'){
+            if(c=='Rock'){
+                console.log("tie");
+            }else if(c=='Paper'){
+                ComputerScore++;
+                console.log("you lose");
+            }else{
+                humanScore++;
+                 console.log("you win");
+            }
+        }
+        else if(human == 'PAPER'){
+            if(c=='Rock'){
+                humanScore++;
+                console.log("you win");
+                
+            }else if(c=='Paper'){
+                 console.log("tie");
+                 
+            }else{
+                ComputerScore++;
+                 console.log("you lose");
+                 
+            }
+    
+        }
+        else if(human== 'SCISSORS'){
+            if(c=='Rock'){
+                ComputerScore++;
+                 console.log("you lose");
+                 
+            }else if(c=='Paper'){
+                humanScore++;
+                console.log("you win");
+                
+            }else{
+                console.log("its a tie!!!"); 
+                
+            }
         }
     }
-    else if(human == 'PAPER'){
-        if(c=='Rock'){
-            humanScore++;
-            return "you win";
-        }else if(c=='Paper'){
-            return "tie";
-        }else{
-            ComputerScore++;
-            return "you lose"
-        }
-
+    
+    for(let i=0;i<5;i++){
+        playRound();
     }
-    else{
-        if(c=='Rock'){
-            ComputerScore++;
-            return "you lose";
-        }else if(c=='Paper'){
-            humanScore++;
-            "you win";
-        }else{
-            "its a tie!!!"   
-        }
+    if(humanScore>ComputerScore){
+        console.log("human wins")
+    }else{
+        console.log("Computer wins!")
     }
 }
 
