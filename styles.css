@@ -1,0 +1,18 @@
+html, body {
+    height: 100%; /* Ensure the body takes up the full height */
+}
+
+.screen{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 12px;
+}
+
+.container{
+    display: flex;
+    gap: 12px;
+
+}
